@@ -1,6 +1,6 @@
 ---
 - name: SPC java application
-  host: all
+  hosts: all
   become: yes
   tasks:
     - name: Make sure Java 11 is installed
