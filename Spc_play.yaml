@@ -25,4 +25,12 @@
         owner: bootuser
         group: bootuser
         mode: '500'
-          
+    - name: Make sure the service file is in /etc/systemd/system/  
+      copy:
+        src: springpet-2.4.2.service
+        dest: /etc/systemd/system/springpet-2.4.2.service
+    - name: Run the service 
+      systemd:
+          name: springpet-2.4.2.service
+          state: started
+          enabled: yes
