@@ -1,0 +1,6 @@
+ansible 2.9.26
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/jenkins/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.17 (default, Feb 27 2021, 15:10:58) [GCC 7.5.0]
