@@ -6,7 +6,7 @@
     - name: Make sure Java 11 is installed
       apt:
         name: openjdk-11-jdk
-        updatecache: yes 
+        update_cache: yes 
         state: present
 
     - name: make sure User bootuse is available
