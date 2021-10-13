@@ -2,28 +2,33 @@
 - name: SPC java application
   hosts: all
   become: yes
+  vars:
+    java_pkg: openjdk-11-jdk
+    app_path: /usr/share/springpet/springpet-2.4.2.jar
+    app_user: bootuser
+    app_url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
   tasks:
     - name: Make sure Java 11 is installed
       apt:
-        name: openjdk-11-jdk
+        name: "{{java_pkg}}"
         update_cache: yes 
         state: present
 
     - name: make sure User bootuse is available
       user:
-        name: bootuser
+        name: "{{app_user}}"
     - name: Make sure Dir springpet is available
       file:
         path: /usr/share/springpet/
-        owner: bootuser
-        group: bootuser
+        owner: "{{app_user}}"
+        group: "{{app_user}}"
         state: directory   
     - name: make sure spring-pet-clinic.jar is downloaded 
       get_url:
-        url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
-        dest: /usr/share/springpet/springpet-2.4.2.jar
-        owner: bootuser
-        group: bootuser
+        url: "{{app_url}}"
+        dest: "{{app_path}}"
+        owner: "{{app_user}}"
+        group: "{{app_user}}"
         mode: '500'
     - name: Make sure the service file is in /etc/systemd/system/  
       copy:
